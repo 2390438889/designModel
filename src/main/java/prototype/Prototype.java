@@ -2,6 +2,8 @@ package prototype;
 
 import strategy.Product;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,18 +50,24 @@ public class Prototype implements Cloneable{
     }
 
     @Override
-    public String toString() {
-        return super.toString();
-    }
-
-    @Override
     protected Object clone(){
         Prototype prototype = null;
         try {
             prototype = (Prototype)super.clone();
+            prototype.likes = new ArrayList<String>(likes);
+            prototype.experise = (Experise) experise.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return prototype;
+    }
+
+    @Override
+    public String toString() {
+        return "Prototype{" +
+                "name='" + name + '\'' +
+                ", likes=" + likes +
+                ", experise=" + experise +
+                '}';
     }
 }
